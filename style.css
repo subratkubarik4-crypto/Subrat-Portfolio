@@ -336,99 +336,48 @@ button:active {
     color: var(--cyan);
 }
 
+/* ================= PROFILE PHOTO + ANIMATION ================= */
 
-/* =========================================================
-   PROFILE
-   ========================================================= */
+.profile-circle {
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+}
 
-.profile {
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 50%;
     position: relative;
     z-index: 2;
 
-    animation: profileFloat 4s ease-in-out infinite;
+    /* Photo animation */
+    animation: profileZoom 4s ease-in-out infinite;
 }
 
-.profile-circle {
-    width: 300px;
-    height: 300px;
+/* Smooth zoom in-out */
+@keyframes profileZoom {
+    0% {
+        transform: scale(1);
+    }
 
-    border-radius: 50%;
+    50% {
+        transform: scale(1.08);
+    }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    position: relative;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(15, 28, 65, 0.95),
-            rgba(2, 7, 20, 0.9)
-        );
-
-    border: 3px solid transparent;
-
-    background-clip: padding-box;
-
-    box-shadow:
-        0 0 30px rgba(180, 60, 255, 0.35),
-        0 0 70px rgba(0, 229, 255, 0.18),
-        inset 0 0 35px rgba(0, 229, 255, 0.08);
+    100% {
+        transform: scale(1);
+    }
 }
 
-.profile-circle::before {
-    content: "";
-
-    position: absolute;
-    inset: -4px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        var(--purple),
-        var(--cyan),
-        var(--purple)
-    );
-
-    z-index: -1;
-
-    animation: rotateBorder 5s linear infinite;
-}
-
-.profile-circle::after {
-    content: "";
-
-    position: absolute;
-
-    width: 370px;
-    height: 370px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(0, 229, 255, 0.18);
-
-    animation: orbit 8s linear infinite;
-}
-
+/* Old SUBRAT PHOTO text hide */
 .profile-circle span {
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 1.5;
-
-    background: linear-gradient(
-        90deg,
-        var(--cyan),
-        #ffffff,
-        var(--purple)
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    display: none;
 }
+
 
 
 /* =========================================================
